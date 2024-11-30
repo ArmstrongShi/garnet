@@ -15,5 +15,8 @@ spec:
       targetPort: {{ .Values.containers.port }}
       protocol: TCP
       name: garnet
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
   selector:
     {{- include "garnet.selectorLabels" . | nindent 4 }}

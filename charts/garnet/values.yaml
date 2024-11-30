@@ -4,7 +4,7 @@ statefulSet:
   # -- StatefulSet annotations
   annotations: {}
   # -- StatefulSet replicas
-  replicas: 1
+  replicas: 3
   # -- StatefulSet revisionHistoryLimit
   revisionHistoryLimit: 1
   updateStrategy:
@@ -41,7 +41,7 @@ serviceAccount:
 
 containers:
   # -- Containers args
-  args: []
+  args: ["--cluster"]
   # -- Containers port
   port: 6379
   # -- Containers livenessProbe
@@ -93,9 +93,10 @@ service:
   # -- Service annotations
   annotations: {}
   # -- Service type
-  type: ClusterIP
+  type: NodePort
   # -- Service port
   port: 6379
+  nodePort: 31748
 
 # -- Resources
 resources: {}
